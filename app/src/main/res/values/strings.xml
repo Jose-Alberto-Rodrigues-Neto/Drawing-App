@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Drawing App</string>
+    <string name="brushSizeNum">7</string>
 </resources>
