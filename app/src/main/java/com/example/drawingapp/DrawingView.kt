@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.* //faz com que possamos utilizar todos os imports de android.graphics
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintSet.Motion
@@ -17,6 +18,11 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs){
     private var mBrushSize: Float = 0f
     private var mColor = Color.BLACK
     private var mCanvas: Canvas? = null
+    private var mPaths = ArrayList<CustomPath>() //cria um array que irá guardar os dados ddas linhas desenhadas
+
+    init{
+        setUpDrawing()
+    }
 
 
     private fun setUpDrawing(){
@@ -27,7 +33,6 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs){
         mDrawPaint!!.strokeJoin = Paint.Join.ROUND
         mDrawPaint!!.strokeCap = Paint.Cap.ROUND
         mCanvasPaint = Paint(Paint.DITHER_FLAG)
-        mBrushSize = 20f
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -40,6 +45,13 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs){
         super.onDraw(canvas)
         canvas.drawBitmap(mCanvasBitmap!!, 0f, 0f, mCanvasPaint)
 
+        for(path in mPaths){ //fixa os traços no quadro
+            mDrawPaint!!.strokeWidth = path.brushTam
+            mDrawPaint!!.color = path.color
+            canvas.drawPath(path, mDrawPaint!!)
+
+        }
+
         if(!mDrawPath!!.isEmpty){
             mDrawPaint!!.strokeWidth = mDrawPath!!.brushTam
             mDrawPaint!!.color = mDrawPath!!.color
@@ -49,9 +61,7 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs){
 
     }
 
-    init{
-        setUpDrawing()
-    }
+
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         val touchX = event?.x
@@ -78,6 +88,7 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs){
                 }
             }
             MotionEvent.ACTION_UP ->{
+                mPaths.add(mDrawPath!!) //adiciona o traço criado mPaths, ou seja, em um array
                 mDrawPath = CustomPath(mColor, mBrushSize)
             }
             else -> return false
@@ -87,6 +98,10 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs){
         return true
     }
 
+    fun setBrushSize(newSize: Float){ //faz com que a mudança de tamanho do pincel seja mais fácil de alterar, ao chamar a função na "MainActivity"
+        mBrushSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, newSize, resources.displayMetrics)
+        mDrawPaint!!.strokeWidth = mBrushSize
+    }
 
 
     internal inner class CustomPath(var color: Int, var brushTam: Float): Path(){
