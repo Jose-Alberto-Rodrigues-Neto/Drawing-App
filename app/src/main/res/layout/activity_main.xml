@@ -35,8 +35,8 @@
             android:id="@+id/btn_brushSizePicker"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_launcher_background"
-            android:contentDescription="brushsize"
+            android:src="@drawable/ic_launcher_foreground"
+            android:contentDescription="BtnButtonBrushSizePicker"
             />
     </LinearLayout>
 

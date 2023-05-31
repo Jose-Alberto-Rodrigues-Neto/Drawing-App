@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.SeekBar
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,28 +22,42 @@ class MainActivity : AppCompatActivity() {
         val brushPicker: ImageButton = findViewById(R.id.btn_brushSizePicker)
         brushPicker.setOnClickListener{
             displayDialog()
+
         }
     }
 
     fun displayDialog(){
         val brushDialog = Dialog(this)
         brushDialog.setContentView(R.layout.dialog_brush_size)
-        //todo: tentar utilizar "when", para ver se fica mais "bonito"
-        val smallbtn = brushDialog.findViewById<ImageButton>(R.id.ib_small_brush)
-        smallbtn.setOnClickListener{
-            drawingView?.setBrushSize(3f)
+        //todo: fazer o display ficar maior/aumentar o tamanho do seekbar
+
+        val sbBrushPicker: SeekBar = brushDialog.findViewById(R.id.sb_brush_size_picker)
+        sbBrushPicker.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            var startSize = 0
+            var endSize = 0
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                drawingView?.setBrushSize(progress.toFloat())
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                if (seekBar != null) {
+                    startSize = sbBrushPicker.progress
+                }
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                if (seekBar != null) {
+                    endSize = sbBrushPicker.progress
+                }
+            }
+
+        })
+
+        val btnChoose = brushDialog.findViewById<Button>(R.id.enter)
+        btnChoose.setOnClickListener{
             brushDialog.dismiss()
         }
-        val mediumbtn = brushDialog.findViewById<ImageButton>(R.id.medium_brush)
-        mediumbtn.setOnClickListener{
-            drawingView?.setBrushSize(15f)
-            brushDialog.dismiss()
-        }
-        val extrabtn = brushDialog.findViewById<ImageButton>(R.id.extra_brush)
-        extrabtn.setOnClickListener{
-            drawingView?.setBrushSize(30f)
-            brushDialog.dismiss()
-        }
+
         brushDialog.show()
     }
 
