@@ -8,6 +8,7 @@ import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintSet.Motion
+import androidx.core.graphics.toColorInt
 
 class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs){
 
@@ -101,6 +102,11 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs){
     fun setBrushSize(newSize: Float){ //faz com que a mudança de tamanho do pincel seja mais fácil de alterar, ao chamar a função na "MainActivity"
         mBrushSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, newSize, resources.displayMetrics)
         mDrawPaint!!.strokeWidth = mBrushSize
+    }
+
+    fun setBrushColor(newColor: Int){
+        mColor = newColor //recebe o valor da cor e armazena
+        mDrawPaint!!.color = mColor //recebe o valor armazenado
     }
 
 
