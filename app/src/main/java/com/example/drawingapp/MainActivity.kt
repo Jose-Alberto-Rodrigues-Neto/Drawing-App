@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private var defaultColor = 0
     private var btnColorPicker: ImageButton? = null
     private var brushPicker: ImageButton? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
