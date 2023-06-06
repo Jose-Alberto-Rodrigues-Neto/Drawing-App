@@ -4,8 +4,6 @@
 
     <!-- Setando as permissões do celular -->
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
     <!-- screenOrientation seta a orientação dada ao app, fazendo com que ele não mude com a rotação do celular -->
     <application
         android:allowBackup="true"
