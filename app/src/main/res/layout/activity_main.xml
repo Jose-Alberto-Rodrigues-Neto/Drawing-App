@@ -15,12 +15,17 @@
         android:gravity="center"
         android:layout_margin="3dp">
 
-        <TextView
+        <Button
+            android:id="@+id/tv_canvasName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Canva"
+            android:text="@string/canvas"
             android:textSize="25sp"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:padding="0dp"
+            android:backgroundTint="@color/light_grey"
+            android:contentDescription="@string/changeCanvasName"/>
         <!-- O framelayout irá funcionar como camadas/layers, em um desenho
          todo: fazer com que possa ser criadas mais layers e apaga-las, além de mexer em suas propriedades
          -->
@@ -35,13 +40,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/fl_image_bg"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                />
 
             <com.example.drawingapp.DrawingView
                 android:id="@+id/drawing_view"
@@ -58,12 +56,22 @@
             android:padding="4dp"
             android:orientation="horizontal"
             >
+
+            <ImageButton
+                android:id="@+id/btn_undo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_launcher_background"
+                android:contentDescription="@string/btnundo"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                />
             <ImageButton
                 android:id="@+id/btn_brushSizePicker"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/ic_launcher_foreground"
-                android:contentDescription="BtnButtonBrushSizePicker"
+                android:contentDescription="@string/btnbrushsizepicker"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
                 />
@@ -75,17 +83,28 @@
                 android:background="@color/black"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
-                android:contentDescription="BtnButtonBrushColorPicker"
+                android:contentDescription="@string/btnbrushcolorpicker"
                 />
             <ImageButton
-                android:id="@+id/btn_bgChanger"
+                android:id="@+id/btn_layers"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_launcher_background"
-                android:contentDescription="BtnButtonBGChanger"
+                android:src="@drawable/ic_launcher_foreground"
+                android:background="@color/ui_primary"
+                android:contentDescription="@string/btnlayers"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
                 />
+            <ImageButton
+                android:id="@+id/btn_redo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_launcher_background"
+                android:contentDescription="@string/btnredo"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                />
+
 
         </LinearLayout>
 

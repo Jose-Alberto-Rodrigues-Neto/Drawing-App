@@ -20,11 +20,25 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs){
     private var mColor = Color.BLACK
     private var mCanvas: Canvas? = null
     private var mPaths = ArrayList<CustomPath>() //cria um array que irá guardar os dados ddas linhas desenhadas
+    private var mUndoPaths = ArrayList<CustomPath>()
 
     init{
         setUpDrawing()
     }
 
+    fun onClickUndo(){
+        if(mPaths.size > 0){
+            mUndoPaths.add(mPaths.removeAt(mPaths.size - 1)) //recebe o ultimo traço antes do atual
+            invalidate()
+        }
+    }
+
+    fun onClickRedo(){
+        if(mUndoPaths.size > 0){
+            mPaths.add(mUndoPaths.removeAt(mUndoPaths.size - 1)) //processo contrário
+            invalidate()
+        }
+    }
 
     private fun setUpDrawing(){
         mDrawPaint = Paint()

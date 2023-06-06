@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Drawing App</string>
     <string name="brushSizeNum">7</string>
+    <string name="btnredo">BtnButtonRedo</string>
+    <string name="canvas">Canvas</string>
+    <string name="btnlayers">BtnButtonLayers</string>
+    <string name="btnbrushcolorpicker">BtnButtonBrushColorPicker</string>
+    <string name="btnbrushsizepicker">BtnButtonBrushSizePicker</string>
+    <string name="btnundo">BtnButtonUndo</string>
+    <string name="changeCanvasName">BtnChangeNameOfCanvas</string>
 </resources>

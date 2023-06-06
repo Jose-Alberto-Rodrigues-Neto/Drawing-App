@@ -1,23 +1,19 @@
 package com.example.drawingapp
 
-import android.Manifest
-import android.app.AlertDialog
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.SeekBar
 import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityCompat
 import yuku.ambilwarna.AmbilWarnaDialog
 
 
 class MainActivity : AppCompatActivity() {
 
+    private var canvasName: Button? = null
     private var drawingView: DrawingView? = null
     private var textBrushSize: TextView? = null
     var startSize = 7
@@ -25,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     private var defaultColor = 0
     private var btnColorPicker: ImageButton? = null
     private var btnBrushPicker: ImageButton? = null
+    private var btnBrushPathUndo: ImageButton? = null
+    private var btnBrushPathRedo: ImageButton? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         drawingView = findViewById(R.id.drawing_view)
         drawingView?.setBrushSize(startSize.toFloat())
 
+        //setando um brush/pincel
         btnBrushPicker= findViewById(R.id.btn_brushSizePicker)
         btnBrushPicker?.setOnClickListener{
             displayDialogBrushSizePicker()
@@ -47,6 +46,23 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        //setando o botão de desfazer
+        btnBrushPathUndo = findViewById(R.id.btn_undo)
+        btnBrushPathUndo?.setOnClickListener {
+            drawingView?.onClickUndo()
+        }
+
+        //setando o botão refazer
+        btnBrushPathRedo = findViewById(R.id.btn_redo)
+        btnBrushPathRedo?.setOnClickListener {
+            drawingView?.onClickRedo()
+        }
+
+        //fazendo o nome do Canvas mudar
+        canvasName = findViewById(R.id.tv_canvasName)
+        canvasName?.setOnClickListener{
+            displayDialogChangeCanvasName()
+        }
 
     }
 
@@ -112,4 +128,11 @@ class MainActivity : AppCompatActivity() {
         colorPickerDialogue.show()
     }
 
+    private fun displayDialogChangeCanvasName() {
+        val nameDialog = Dialog(this)
+        nameDialog.setContentView(R.layout.dialog_canvas_name)
+        nameDialog.window?.setLayout(600, 560) //setando o tamanho da tela do dialog
+
+        nameDialog.show()
+    }
 }
