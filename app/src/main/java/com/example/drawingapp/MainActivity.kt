@@ -23,7 +23,8 @@ class MainActivity : AppCompatActivity() {
     var endSize = 0
     private var defaultColor = 0
     private var btnColorPicker: ImageButton? = null
-    private var brushPicker: ImageButton? = null
+    private var btnBrushPicker: ImageButton? = null
+    private var btnBgChanger: ImageButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +33,8 @@ class MainActivity : AppCompatActivity() {
         drawingView = findViewById(R.id.drawing_view)
         drawingView?.setBrushSize(startSize.toFloat())
 
-        brushPicker= findViewById(R.id.btn_brushSizePicker)
-        brushPicker?.setOnClickListener{
+        btnBrushPicker= findViewById(R.id.btn_brushSizePicker)
+        btnBrushPicker?.setOnClickListener{
             displayDialogBrushSizePicker()
 
         }
@@ -42,6 +43,12 @@ class MainActivity : AppCompatActivity() {
         btnColorPicker = findViewById(R.id.btn_brushColorPicker)
         btnColorPicker?.setOnClickListener{
             displayDialogBrushColorPicker()
+
+        }
+
+        //setando a mudança de background
+        btnBgChanger = findViewById(R.id.btn_bgChanger)
+        btnBgChanger?.setOnClickListener{
 
         }
 

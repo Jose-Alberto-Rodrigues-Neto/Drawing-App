@@ -21,17 +21,36 @@
             android:text="Canva"
             android:textSize="25sp"
             android:textStyle="italic"/>
-
-        <com.example.drawingapp.DrawingView
-            android:layout_margin="10dp"
-            android:id="@+id/drawing_view"
+        <!-- O framelayout irá funcionar como camadas/layers, em um desenho
+         todo: fazer com que possa ser criadas mais layers e apaga-las, além de mexer em suas propriedades
+         -->
+        <FrameLayout
+            android:id="@+id/fl_drawing_container"
             android:layout_width="333dp"
             android:layout_height="584dp"
+            android:layout_margin="10dp"
+            android:padding="1dp"
             android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/btn_brushSizePicker"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/fl_image_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="no"/>
+
+            <com.example.drawingapp.DrawingView
+                android:id="@+id/drawing_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                 />
+        </FrameLayout>
+
+
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -57,6 +76,15 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:contentDescription="BtnButtonBrushColorPicker"
+                />
+            <ImageButton
+                android:id="@+id/btn_bgChanger"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_launcher_background"
+                android:contentDescription="BtnButtonBGChanger"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
                 />
 
         </LinearLayout>

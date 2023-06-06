@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Setando as permissões do celular -->
+    <uses-permission-sdk-23 android:name="android.permission.CAMERA"/>
+
+    <!-- screenOrientation seta a orientação dada ao app, fazendo com que ele não mude com a rotação do celular -->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
