@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="light_grey">#DDD6D6</color>
+♦    <color name="light_grey">#DDD6D6</color>
     <color name="ui_brush_color">#494545</color>
     <color name="ui_primary">#C9A385</color>
 </resources>
