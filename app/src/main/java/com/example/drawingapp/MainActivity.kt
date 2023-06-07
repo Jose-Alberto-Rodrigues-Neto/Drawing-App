@@ -73,6 +73,7 @@ class MainActivity : AppCompatActivity() {
         2- salvar o arquivo com nome diferente
         3- fazer com que dê para criar e mexer em layer
         4- criar e mexer com imagens
+        5- continuar aula sobre salvar arquivos, precisare voltar e fazer a parte de mexer nas imagens
      */
 
     private fun displayDialogBrushSizePicker(){

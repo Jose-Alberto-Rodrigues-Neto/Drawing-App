@@ -37,6 +37,7 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs){
         if(mUndoPaths.size > 0){
             mPaths.add(mUndoPaths.removeAt(mUndoPaths.size - 1)) //processo contrário
             invalidate()
+            //todo: ajeitar o redo, apagar informações antigas quando criadas novas
         }
     }
 

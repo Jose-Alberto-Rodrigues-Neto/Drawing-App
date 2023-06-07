@@ -10,4 +10,5 @@
     <string name="changeCanvasName">BtnChangeNameOfCanvas</string>
     <string name="enter">ENTER</string>
     <string name="canvasGetName">Canvas name:</string>
+    <string name="btnsavecanvas">btnSaveCanvas</string>
 </resources>
