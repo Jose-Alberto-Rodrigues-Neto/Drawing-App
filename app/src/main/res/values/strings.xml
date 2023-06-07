@@ -8,4 +8,6 @@
     <string name="btnbrushsizepicker">BtnButtonBrushSizePicker</string>
     <string name="btnundo">BtnButtonUndo</string>
     <string name="changeCanvasName">BtnChangeNameOfCanvas</string>
+    <string name="enter">ENTER</string>
+    <string name="canvasGetName">Canvas name:</string>
 </resources>

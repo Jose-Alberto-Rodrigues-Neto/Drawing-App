@@ -3,11 +3,13 @@ package com.example.drawingapp
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.SeekBar
 import android.widget.TextView
+import android.widget.Toast
 import yuku.ambilwarna.AmbilWarnaDialog
 
 
@@ -132,6 +134,15 @@ class MainActivity : AppCompatActivity() {
         val nameDialog = Dialog(this)
         nameDialog.setContentView(R.layout.dialog_canvas_name)
         nameDialog.window?.setLayout(600, 560) //setando o tamanho da tela do dialog
+
+        val changingCanvasName: EditText = nameDialog.findViewById(R.id.tv_changeCanvaName)
+        changingCanvasName.setText(canvasName?.text) //fazendo com que o texto no EditText mude conforme o nome do Canvas
+        val btnEnterChangingName: Button = nameDialog.findViewById(R.id.btn_canvasNameEnter)
+        btnEnterChangingName.setOnClickListener{
+            canvasName?.text = changingCanvasName.text
+            nameDialog.dismiss()
+        }
+
 
         nameDialog.show()
     }
