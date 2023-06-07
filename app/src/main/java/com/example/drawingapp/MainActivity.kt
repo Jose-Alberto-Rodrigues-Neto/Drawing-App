@@ -68,6 +68,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /*todo-list:
+        1- fazer com que o arquivo possa ser salvo
+        2- salvar o arquivo com nome diferente
+        3- fazer com que dê para criar e mexer em layer
+        4- criar e mexer com imagens
+     */
 
     private fun displayDialogBrushSizePicker(){
         val brushDialog = Dialog(this)

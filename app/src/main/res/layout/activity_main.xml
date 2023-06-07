@@ -26,15 +26,13 @@
             android:padding="0dp"
             android:backgroundTint="@color/light_grey"
             android:contentDescription="@string/changeCanvasName"/>
-        <!-- O framelayout irá funcionar como camadas/layers, em um desenho
-         todo: fazer com que possa ser criadas mais layers e apaga-las, além de mexer em suas propriedades
-         -->
+
         <FrameLayout
             android:id="@+id/fl_drawing_container"
             android:layout_width="333dp"
             android:layout_height="584dp"
             android:layout_margin="10dp"
-            android:padding="1dp"
+            android:padding="0dp"
             android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/btn_brushSizePicker"
             app:layout_constraintStart_toStartOf="parent"
