@@ -1,16 +1,32 @@
 package com.example.drawingapp
 
+import android.Manifest
 import android.app.Dialog
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.media.Image
+import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
+import android.provider.Settings
 import android.text.Editable
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import yuku.ambilwarna.AmbilWarnaDialog
+import java.io.File
+import java.lang.StringBuilder
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +41,8 @@ class MainActivity : AppCompatActivity() {
     private var btnBrushPicker: ImageButton? = null
     private var btnBrushPathUndo: ImageButton? = null
     private var btnBrushPathRedo: ImageButton? = null
-
+    private var btnSaveCanvas: ImageButton? = null
+    private var btnCanvasLayers: ImageButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,10 +83,22 @@ class MainActivity : AppCompatActivity() {
             displayDialogChangeCanvasName()
         }
 
+        //setando a função de salvar o desenho
+        btnSaveCanvas = findViewById(R.id.btn_saveCanvas)
+        btnSaveCanvas?.setOnClickListener {
+            Toast.makeText(this, "A função de salvar não foi criada ainda", Toast.LENGTH_SHORT).show()
+        }
+
+        //setando o acesso as layers
+        btnCanvasLayers = findViewById(R.id.btn_layers)
+        btnCanvasLayers?.setOnClickListener {
+            Toast.makeText(this, "A função layers ainda não foi criada", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     /*todo-list:
-        1- fazer com que o arquivo possa ser salvo
+        1- fazer com que o arquivo possa ser salvo ( o mais importante )
         2- salvar o arquivo com nome diferente
         3- fazer com que dê para criar e mexer em layer
         4- criar e mexer com imagens
@@ -153,4 +182,5 @@ class MainActivity : AppCompatActivity() {
 
         nameDialog.show()
     }
+
 }
