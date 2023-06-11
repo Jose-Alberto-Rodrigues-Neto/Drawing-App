@@ -21,26 +21,27 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs){
     private var mCanvas: Canvas? = null
     private var mPaths = ArrayList<CustomPath>() //cria um array que irá guardar os dados ddas linhas desenhadas
     private var mUndoPaths = ArrayList<CustomPath>()
-    private var touched: Boolean = false
+    private var timerTouched = 0
+
 
     init{
         setUpDrawing()
     }
 
     fun onClickUndo(){
-        if(mPaths.size > 0){
+        if (mPaths.size > 0) {
             mUndoPaths.add(mPaths.removeAt(mPaths.size - 1)) //recebe o ultimo traço antes do atual
             invalidate()
-            touched = false
+
         }
+
         //if(mPaths.size<mUndoPaths.size){ touched = true }, não é uma boa solução
     }
 
     fun onClickRedo(){
-        if(mUndoPaths.size > 0 && !touched){
+        if(mUndoPaths.size > 0){
             mPaths.add(mUndoPaths.removeAt(mUndoPaths.size - 1)) //processo contrário
             invalidate()
-            touched = false
             //todo: fazer com que a interação do undo não interfira diretamente
         }
     }
@@ -86,7 +87,6 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs){
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         val touchX = event?.x
         val touchY = event?.y
-        touched = true
 
         when(event?.action){
             MotionEvent.ACTION_DOWN ->{
