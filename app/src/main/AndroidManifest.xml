@@ -2,9 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Setando as permissões do celular -->
-
-    <!-- screenOrientation seta a orientação dada ao app, fazendo com que ele não mude com a rotação do celular -->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,6 +12,15 @@
         android:theme="@style/Theme.DrawingApp"
         tools:targetApi="31">
         <activity
+            android:name=".FirstScreenViewActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
@@ -24,7 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

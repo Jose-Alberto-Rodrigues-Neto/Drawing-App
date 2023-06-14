@@ -11,4 +11,5 @@
     <string name="enter">ENTER</string>
     <string name="canvasGetName">Canvas name:</string>
     <string name="btnsavecanvas">btnSaveCanvas</string>
+    <string name="cancel">CANCEL</string>
 </resources>
