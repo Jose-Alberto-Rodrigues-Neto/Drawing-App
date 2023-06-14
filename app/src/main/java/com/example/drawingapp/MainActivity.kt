@@ -15,6 +15,7 @@ import android.text.Editable
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.SeekBar
 import android.widget.TextView
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     private var canvasName: Button? = null
     private var drawingView: DrawingView? = null
+    private var canvasProps: FrameLayout? = null
     private var textBrushSize: TextView? = null
     var startSize = 7
     var endSize = 0
@@ -79,6 +81,7 @@ class MainActivity : AppCompatActivity() {
 
         //fazendo o nome do Canvas mudar
         canvasName = findViewById(R.id.tv_canvasName)
+        canvasName?.text = CanvasProperties.canvasName
         canvasName?.setOnClickListener{
             displayDialogChangeCanvasName()
         }
@@ -95,14 +98,15 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "A função layers ainda não foi criada", Toast.LENGTH_SHORT).show()
         }
 
+        //setando a mudança prévia do tamanho do canvas
+        canvasProps = findViewById(R.id.fl_drawing_container)
+        canvasProps?.layoutParams?.height = intent.getStringExtra(CanvasProperties.canvasH)?.toInt()
+        canvasProps?.layoutParams?.width = intent.getStringExtra(CanvasProperties.canvasW)?.toInt()
+
     }
 
     /*todo-list:
         1- fazer com que o arquivo possa ser salvo ( o mais importante )
-        2- salvar o arquivo com nome diferente
-        3- fazer com que dê para criar e mexer em layer
-        4- criar e mexer com imagens
-        5- continuar aula sobre salvar arquivos, precisare voltar e fazer a parte de mexer nas imagens
      */
 
     private fun displayDialogBrushSizePicker(){
@@ -172,10 +176,10 @@ class MainActivity : AppCompatActivity() {
         nameDialog.window?.setLayout(600, 560) //setando o tamanho da tela do dialog
 
         val changingCanvasName: EditText = nameDialog.findViewById(R.id.tv_changeCanvaName)
-        changingCanvasName.setText(canvasName?.text) //fazendo com que o texto no EditText mude conforme o nome do Canvas
+        changingCanvasName.setText(CanvasProperties.canvasName) //fazendo com que o texto no EditText mude conforme o nome do Canvas
         val btnEnterChangingName: Button = nameDialog.findViewById(R.id.btn_canvasNameEnter)
         btnEnterChangingName.setOnClickListener{
-            canvasName?.text = changingCanvasName.text
+            CanvasProperties.canvasName = changingCanvasName.text.toString()
             nameDialog.dismiss()
         }
 

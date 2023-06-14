@@ -26,7 +26,10 @@
         android:hint="Set canvas width"
         android:textSize="20sp"
         android:textStyle="italic"
-        android:textColorHint="@color/ui_primary"/>
+        android:textColorHint="@color/ui_primary"
+        android:inputType="phone"
+        android:autofillHints="phone"
+        android:layout_margin="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,7 +50,11 @@
         android:hint="Set canvas height"
         android:textSize="20sp"
         android:textStyle="italic"
-        android:textColorHint="@color/ui_primary"/>
+        android:textColorHint="@color/ui_primary"
+        android:inputType="phone"
+        android:autofillHints="phone"
+        android:layout_margin="10dp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
